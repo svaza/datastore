@@ -1,8 +1,9 @@
 {
-  "name": "datastorage",
+  "name": "@svaza/datastore",
   "version": "1.0.0",
-  "description": "A library to manage data store",
-  "main": "index.js",
+  "description": "A simple javascript library for managing the state. Nothing is out of the box, all is the play of rxjs BehaviorSubject<>",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "rxjs": "^6.5.5"
   },
@@ -18,18 +19,19 @@
     "typescript": "^3.9.5"
   },
   "scripts": {
+    "build": "tsc",
     "test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json",
     "lint": "npm run eslint",
     "eslint": "eslint . --ext .js,.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/svaza/datastorage.git"
+    "url": "git+https://github.com/svaza/datastore.git"
   },
   "author": "svaza",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/svaza/datastorage/issues"
+    "url": "https://github.com/svaza/datastore/issues"
   },
-  "homepage": "https://github.com/svaza/datastorage#readme"
+  "homepage": "https://github.com/svaza/datastore#readme"
 }
