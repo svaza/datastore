@@ -1,4 +1,4 @@
-# datastorage
+# datastore
 A simple javascript library for managing the state
 
 # design and inspiration
@@ -11,8 +11,60 @@ Sometimes to support the principle of not mutating objects one might end up stru
 
 So this library is for the devs who wants to mutate a particular object and at the same time enable the app to perform some action when it happens, however notifying the app about the action is sole responsibility of the developer. By this way a dev gets more fine grained control.
 
-This can be easily achieved by directly using rxjs, however one of the important design requirement is to have a data structure which helps managing data and subscriptions centrally and IDataStore does that.
+This can be easily achieved by directly using rxjs, however one of the important design requirement is to have a data structure which helps managing data and subscriptions centrally and [IDataStore](https://github.com/svaza/datastore/blob/master/src/data-store.ts) does that.
 
 
-# How it works
-Uses rxjs for managing subscriptions and data centrally. Data can be an application state
+# how it works
+Uses rxjs for managing subscriptions centrally. Every data is identified by a key (of string type), same key can be used to register subscriptions over the data, or perform any of the operations as defined by [IDataStore](https://github.com/svaza/datastore/blob/master/src/data-store.ts) data structure.
+
+# usage
+- Simply create an instance of required type of store implementation
+``` typescript
+    let store: IDataStore = new MemoryStore();
+```
+
+
+- Register subscription over a key
+``` typescript
+    var subscription = store.observe('<key>')
+                            .subscribe(data => {
+                                // handle the data change
+                            });
+    // stop observing
+    subscription.unsubscibe();
+```
+
+
+- Add some data
+``` typescript
+    // adding data notifies all observers of that key
+    store.add('<key>', { message: 'hello world' });
+
+    // add data without notifying all observers of that key
+    store.addSilently('<key>', { message: 'hello world' });
+```
+
+- Simply get the data for the given key
+``` typescript
+    let data: SomeModel = store.get<SomeModel>('<key>');
+```
+
+- Mutating the data and notifying observers
+``` typescript
+    let data: SomeModel = store.get<SomeModel>('<key>');
+    data.message = 'hello universe'; // at this point none of the observers will be notified
+    // its dev responsibility to manually notify all observers using notify()
+    store.notify('<some key>');
+```
+
+- Removing a key
+``` typescript
+    // removing a key also unsubscribes the underlying Subject associated with that key, Once key is removed, all underlying observers becomes stale and adding data under same key again will have no effect
+    // useful during dispose
+    store.remove('key');
+```
+
+- Get list of keys
+``` typescript
+    string[] keys = store.keys();
+```
