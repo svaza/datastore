@@ -1,4 +1,6 @@
 # datastore
+![CI](https://github.com/svaza/datastore/workflows/CI/badge.svg?branch=master)
+
 A simple javascript library for managing the state.
 Nothing is out of the box, all is the play of rxjs BehaviorSubject<>
 

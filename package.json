@@ -1,9 +1,10 @@
 {
   "name": "@svaza/datastore",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple javascript library for managing the state. Nothing is out of the box, all is the play of rxjs BehaviorSubject<>",
   "main": "dist/index.ts",
   "types": "dist/index.d.ts",
+  "keywords": ["datastore", "store", "memory", "angular", "react", "state management"],
   "dependencies": {
     "rxjs": "^6.5.5"
   },
