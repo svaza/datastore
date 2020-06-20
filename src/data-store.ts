@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 export interface IDataStore {
     
     add(key: string, value: unknown): void;
+
+    addSilently(key: string, value: unknown): void;
     
     get<V>(key: string): V;
     

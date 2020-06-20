@@ -12,6 +12,10 @@ export class MemoryStore implements IDataStore {
         this.notify(key);
     }
 
+    addSilently(key: string, value: unknown): void {
+        this._data[key] = value;
+    }
+
     get<V>(key: string): V {
         return this._data[key] as V;
     }
