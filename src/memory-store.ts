@@ -1,11 +1,11 @@
-import { Observable, Subject } from "rxjs";
+import { Observable, BehaviorSubject } from "rxjs";
 import { IDataStore } from "./data-store";
 
 export class MemoryStore implements IDataStore {
 
     private _data: { [key: string]: unknown } = {};
 
-    private _subjects: { [key: string]: Subject<unknown> } = {};
+    private _subjects: { [key: string]: BehaviorSubject<unknown> } = {};
 
     add(key: string, value: unknown): void {
         this._data[key] = value;
@@ -44,9 +44,9 @@ export class MemoryStore implements IDataStore {
         return Object.keys(this._data);
     }
 
-    private getSubject(key: string): Subject<unknown> {
+    private getSubject(key: string): BehaviorSubject<unknown> {
         if (!this._subjects[key]) {
-            this._subjects[key] = new Subject();
+            this._subjects[key] = new BehaviorSubject(undefined);
         }
         return this._subjects[key];
     }
