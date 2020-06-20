@@ -23,6 +23,9 @@ Uses rxjs for managing subscriptions centrally. Every data is identified by a ke
     npm i @svaza/datastore
 ```
 
+# dependencies
+- [Rxjs](https://github.com/ReactiveX/rxjs)
+
 # usage
 - Simply create an instance of required type of store implementation
 ``` typescript
@@ -80,6 +83,14 @@ If the required key already has data associated with it then subscription will b
 
 # maintainers
 - [svaza](https://github.com/svaza)
+
+
+# version history
+- v1.0.0
+    - initial version
+    - support for memory store
+    - basic store data structure
+
 
 # license
 MIT
