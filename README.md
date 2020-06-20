@@ -18,6 +18,11 @@ This can be easily achieved by directly using rxjs, however one of the important
 # how it works
 Uses rxjs for managing subscriptions centrally. Every data is identified by a key (of string type), same key can be used to register subscriptions over the data, or perform any of the operations as defined by [IDataStore](https://github.com/svaza/datastore/blob/master/src/data-store.ts) data structure.
 
+# installation
+```
+    npm i @svaza/datastore
+```
+
 # usage
 - Simply create an instance of required type of store implementation
 ``` typescript
