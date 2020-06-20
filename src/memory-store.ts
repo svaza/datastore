@@ -1,7 +1,7 @@
 import { Observable, Subject } from "rxjs";
-import { IDataStorage } from "./storage";
+import { IDataStore } from "./data-store";
 
-export class MemoryStorage implements IDataStorage {
+export class MemoryStore implements IDataStore {
 
     private _data: { [key: string]: unknown } = {};
 

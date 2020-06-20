@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-export interface IDataStorage {
+export interface IDataStore {
     
     add(key: string, value: unknown): void;
     
