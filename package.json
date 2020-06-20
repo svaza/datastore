@@ -1,0 +1,30 @@
+{
+  "name": "datastorage",
+  "version": "1.0.0",
+  "description": "A library to manage data store",
+  "main": "index.js",
+  "dependencies": {
+    "rxjs": "^6.5.5"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.3.0",
+    "@typescript-eslint/parser": "^3.3.0",
+    "eslint": "^7.3.0",
+    "typescript": "^3.9.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npm run eslint",
+    "eslint": "eslint . --ext .js,.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svaza/datastorage.git"
+  },
+  "author": "svaza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/svaza/datastorage/issues"
+  },
+  "homepage": "https://github.com/svaza/datastorage#readme"
+}
