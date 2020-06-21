@@ -3,3 +3,5 @@ src/
 .eslintrc.js
 tsconfig.json
 jasmine.json
+examples/
+.github/

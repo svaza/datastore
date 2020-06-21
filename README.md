@@ -5,14 +5,14 @@ A simple javascript library for managing the state.
 Nothing is out of the box, all is the play of rxjs BehaviorSubject<>
 
 # design and inspiration
+To be point straight [IDataStore](https://github.com/svaza/datastore/blob/master/src/data-store.ts) implementation was developed to keep state management more simple, hence it works on principle of `mutating the data`, mutation wont work with simple primitive types because the way they are managed in javascript. Its  developer's responsibility to notify all observers of a key if in code the complex object is changed in any way.
+
 Managing application state can sometime become a complex problem, especially when there is a requirement to perform an action when data changes overtime. An action can be as simple as updating a UI component when it happens.
 
 
-There have been frameworks which performs an action when data changes i.e when instance of that data changes, however many times there might not be a need to create copy to avoid mutation, sometimes you would like to mutate the complex object, For example updating a property value in an array of complex objects which might be rendered as table in UI.
-
 Sometimes to support the principle of not mutating an object one might end up structuring an app in a particular way which might make code more complex, For example, A UI component might be unnecessarily broken into tens of components to support this principle.
 
-So this library is for the devs who wants to mutate a particular object and at the same time enable the app to perform some action when it happens, however notifying the app about the action is sole responsibility of the developer. By this way a dev gets more fine grained control.
+Rxjs actually makes the statemanagement more simple and this library is just a small wrapper which manages state centrally, and provides few helpful methods to work with the state
 
 This can be easily achieved by directly using rxjs, however one of the important design requirement is to have a data structure which helps managing data and subscriptions centrally which [IDataStore](https://github.com/svaza/datastore/blob/master/src/data-store.ts) helps in doing that.
 
@@ -28,7 +28,11 @@ Uses rxjs for managing subscriptions centrally. Every data is identified by a ke
 # dependencies
 - [Rxjs](https://github.com/ReactiveX/rxjs)
 
+# important!!
+Please go through complete usage below to understand how this library works
+
 # usage
+- For implementation in angular, refer [examples/angular](https://github.com/svaza/datastore/tree/master/examples/angular)
 - Simply create an instance of required type of store implementation
 ``` typescript
     let store: IDataStore = new MemoryStore();
@@ -44,7 +48,7 @@ If the required key already has data associated with it then subscription will b
                                 // ignore if data is undefined
                                 if(data === undefined) return;
                             });
-    // stop observing
+    // stop observing, if needed
     subscription.unsubscibe();
 ```
 
@@ -52,13 +56,16 @@ If the required key already has data associated with it then subscription will b
 - Add some data
 ``` typescript
     // adding data notifies all observers of that key
-    store.add('<key>', { message: 'hello world' });
+    store.add<SomeType>('<key>', { message: 'hello world' });
 
     // add data without notifying all observers of that key
-    store.addSilently('<key>', { message: 'hello world' });
+    store.addSilently<SomeType>('<key>', { message: 'hello world' });
 ```
 
-- Simply get the data for the given key
+- Simply get the data for the given key. 
+> Important thing to note here is that get() returns the actual underlying reference to the data, So if the respective data is a complex object then changing any of its properties will also change underlying data, i.e javascript reference types and primitive types rules applies here too. 
+In this situation you might need to manually notify all obsrvers of the key as explained in `Mutating the data and notifying observers` usecase below
+
 ``` typescript
     let data: SomeModel = store.get<SomeModel>('<key>');
 ```

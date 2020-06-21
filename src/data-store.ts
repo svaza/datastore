@@ -1,7 +1,10 @@
 import { Observable } from 'rxjs';
 
+/**
+ * Represents a typical datastore data structure
+ */
 export interface IDataStore {
-    
+
     add<V>(key: string, value: V): void;
 
     addSilently<V>(key: string, value: V): void;
