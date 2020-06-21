@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AppMemoryStoreService } from '../app-memory-store';
 import { DataStoreKeys } from '../data-store-keys';
+import { BroadcastMessage } from '../models';
 
 @Component({
   selector: 'app-broadcast',
@@ -12,7 +13,7 @@ export class BroadcastComponent {
   constructor(private store: AppMemoryStoreService) { }
 
   onBroadcastClick() {
-    this.store.add(DataStoreKeys.BroadcastMessageKey, { message: `Hello at ${ new Date().toLocaleString() }` });
+    this.store.add<BroadcastMessage>(DataStoreKeys.BroadcastMessageKey, { message: `Hello at ${ new Date().toLocaleString() }` });
   }
 
 }

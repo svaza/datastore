@@ -1,6 +1,6 @@
 {
   "name": "@svaza/datastore",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simple javascript library for managing the state. Nothing is out of the box, all is the play of rxjs BehaviorSubject<>",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,6 +21,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "publish": "npm run build && npm publish",
     "test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json",
     "lint": "npm run eslint",
     "eslint": "eslint . --ext .js,.ts"
