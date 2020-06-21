@@ -95,6 +95,11 @@ In this situation you might need to manually notify all obsrvers of the key as e
 
 
 # version history
+- v1.1.0
+    - code comments
+    - make add() and addSilently() generic
+    - example angular project
+
 - v1.0.0
     - initial version
     - support for memory store
