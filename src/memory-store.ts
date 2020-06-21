@@ -7,12 +7,12 @@ export class MemoryStore implements IDataStore {
 
     private _subjects: { [key: string]: BehaviorSubject<unknown> } = {};
 
-    add(key: string, value: unknown): void {
+    add<V>(key: string, value: V): void {
         this._data[key] = value;
         this.notify(key);
     }
 
-    addSilently(key: string, value: unknown): void {
+    addSilently<V>(key: string, value: V): void {
         this._data[key] = value;
     }
 
