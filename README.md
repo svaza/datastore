@@ -2,7 +2,7 @@
 ![CI](https://github.com/svaza/datastore/workflows/CI/badge.svg?branch=master)
 
 A simple javascript library for managing the state.
-Nothing is out of the box, all is the play of rxjs BehaviorSubject<>
+Nothing is out of the box, all is the play of rxjs BehaviorSubject<> :tada:
 
 # design and inspiration
 To be point straight [IDataStore](https://github.com/svaza/datastore/blob/master/src/data-store.ts) implementation was developed to keep state management more simple, hence it works on principle of `mutating the data`, mutation wont work with simple primitive types because the way they are managed in javascript. Its  developer's responsibility to notify all observers of a key if in code the complex object is changed in any way.
@@ -100,7 +100,7 @@ In this situation you might need to manually notify all obsrvers of the key as e
     - make add() and addSilently() generic
     - example angular project
 
-- v1.0.0
+- v1.0.0 :rocket:
     - initial version
     - support for memory store
     - basic store data structure
