@@ -7,7 +7,7 @@ Nothing is out of the box, all is the play of rxjs BehaviorSubject<> :tada:
 # design and inspiration
 To be point straight [IDataStore](https://github.com/svaza/datastore/blob/master/src/data-store.ts) implementation was developed to keep state management more simple, hence it works on principle of `mutating the data`, mutation wont work with simple primitive types because the way they are managed in javascript. Its  developer's responsibility to notify all observers of a key if in code the complex object is changed in any way.
 
-Managing application state can sometime become a complex problem, especially when there is a requirement to perform an action when data changes overtime. An action can be as simple as updating a UI component when it happens.
+Managing state in an application can sometime become a complex problem, especially when there is a requirement to perform an action when data changes overtime. An action can be as simple as updating a UI component when it happens.
 
 
 Sometimes to support the principle of not mutating an object one might end up structuring an app in a particular way which might make code more complex, For example, A UI component might be unnecessarily broken into tens of components to support this principle.
